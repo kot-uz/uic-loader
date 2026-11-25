@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Uzinfocom Loader — demo</title>
+<style>
+  body{margin:0;font:16px/1.5 system-ui,sans-serif;background:#fff;color:#10123a;display:grid;place-items:center;min-height:100vh;gap:32px}
+  .row{display:flex;gap:40px;align-items:center;flex-wrap:wrap;justify-content:center}
+  .dark{background:#4C51C6;padding:24px;border-radius:16px}
+</style>
+<script type="module" src="../src/element.js"></script>
+</head>
+<body>
+  <div class="row">
+    <uz-loader size="24"></uz-loader>
+    <uz-loader></uz-loader>
+    <uz-loader size="96"></uz-loader>
+    <uz-loader size="160" duration="0.6"></uz-loader>
+    <div class="dark"><uz-loader size="64" color="#fff"></uz-loader></div>
+  </div>
+  <p>Запуск: <code>npx serve .</code> из корня пакета, затем открыть <code>/demo/</code></p>
+</body>
+</html>

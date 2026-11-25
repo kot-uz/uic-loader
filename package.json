@@ -1,0 +1,20 @@
+{
+  "name": "@uzinfocom/loader",
+  "version": "0.1.0",
+  "description": "Фирменный лоадер Uzinfocom в виде атома: электроны на орбитах вокруг ядра. Web Component + React, без зависимостей.",
+  "type": "module",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": { "types": "./src/index.d.ts", "default": "./src/index.js" },
+    "./element": { "types": "./src/element.d.ts", "default": "./src/element.js" },
+    "./react": { "types": "./src/react.d.ts", "default": "./src/react.js" }
+  },
+  "files": ["src", "README.md"],
+  "sideEffects": ["./src/element.js", "./src/index.js"],
+  "peerDependencies": { "react": ">=17" },
+  "peerDependenciesMeta": { "react": { "optional": true } },
+  "keywords": ["loader", "spinner", "uzinfocom", "web-component", "react"],
+  "publishConfig": { "access": "public" }
+}
