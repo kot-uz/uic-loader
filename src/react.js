@@ -2,7 +2,7 @@ import { createElement, useMemo } from 'react';
 import { html } from './core.js';
 
 /** React-компонент. SSR-безопасен: рендерит готовую SVG-разметку. */
-export function UzLoader({ size, color, duration, label, className, style }) {
+export function UicLoader({ size, color, duration, label, className, style }) {
   const __html = useMemo(
     () => html({ size, color, duration, label }),
     [size, color, duration, label]
@@ -14,4 +14,4 @@ export function UzLoader({ size, color, duration, label, className, style }) {
   });
 }
 
-export default UzLoader;
+export default UicLoader;

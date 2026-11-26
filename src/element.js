@@ -3,7 +3,7 @@ import { html } from './core.js';
 const ATTRS = ['size', 'color', 'duration', 'label'];
 const Base = typeof HTMLElement === 'undefined' ? class {} : HTMLElement;
 
-export class UzLoaderElement extends Base {
+export class UicLoaderElement extends Base {
   static get observedAttributes() {
     return ATTRS;
   }
@@ -21,10 +21,10 @@ export class UzLoaderElement extends Base {
   }
 }
 
-export function defineUzLoader(tag = 'uz-loader') {
+export function defineUicLoader(tag = 'uic-loader') {
   if (typeof customElements !== 'undefined' && !customElements.get(tag)) {
-    customElements.define(tag, UzLoaderElement);
+    customElements.define(tag, UicLoaderElement);
   }
 }
 
-defineUzLoader();
+defineUicLoader();

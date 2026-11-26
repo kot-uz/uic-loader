@@ -4,7 +4,7 @@
  * Механика по мотивам «Atom Loading Icon» Jon Milner (CodePen qBQwQJ, MIT).
  */
 
-export const UZ_BLUE = '#4C51C6';
+export const UIC_BLUE = '#4C51C6';
 
 // Дуга-полумесяц: толстая в начале и сужающаяся к хвосту (viewBox 0 0 100 100).
 const ARC =
@@ -12,7 +12,7 @@ const ARC =
 
 export const DEFAULTS = Object.freeze({
   size: 48,
-  color: UZ_BLUE,
+  color: UIC_BLUE,
   duration: 0.75,
   label: 'Loading',
 });
@@ -37,12 +37,12 @@ export function normalize(opts = {}) {
 }
 
 export const STYLES = `
-.uzl{position:relative;display:inline-block;line-height:0;color:var(--uzl-color);width:var(--uzl-size);height:var(--uzl-size)}
-.uzl-ring{position:absolute;inset:0}
-.uzl-ring svg{display:block;width:100%;height:100%;fill:currentColor;animation:uzl-rotate var(--uzl-duration) linear infinite}
-@keyframes uzl-rotate{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.uzl-ring svg{animation-duration:calc(var(--uzl-duration) * 4)}}
-.uzl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.uic{position:relative;display:inline-block;line-height:0;color:var(--uic-color);width:var(--uic-size);height:var(--uic-size)}
+.uic-ring{position:absolute;inset:0}
+.uic-ring svg{display:block;width:100%;height:100%;fill:currentColor;animation:uic-rotate var(--uic-duration) linear infinite}
+@keyframes uic-rotate{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.uic-ring svg{animation-duration:calc(var(--uic-duration) * 4)}}
+.uic-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 `;
 
 const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -50,20 +50,20 @@ const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>'
 /** Возвращает HTML-разметку лоадера (без стилей). */
 export function markup(opts) {
   const o = normalize(opts);
-  // Две орбиты, как в образце: наклон skew(30deg,20deg) и его зеркальная копия,
-  // второй электрон отстаёт на полоборота.
-  const rings = ['skew(30deg,20deg)', 'skew(-30deg,-20deg) scale(-1,1)']
+  // Две орбиты: наклон skew(30deg,20deg) и та же орбита, повёрнутая на 90°
+  // (перпендикулярно первой); второй электрон отстаёт на полоборота.
+  const rings = ['skew(30deg,20deg)', 'rotate(90deg) skew(30deg,20deg)']
     .map(
       (t, i) =>
-        `<div class="uzl-ring" style="transform:${t}">` +
+        `<div class="uic-ring" style="transform:${t}">` +
         `<svg viewBox="0 0 100 100" aria-hidden="true" focusable="false" style="animation-delay:${(-(o.duration * i) / 2).toFixed(3)}s">` +
         `<path d="${ARC}"/></svg></div>`
     )
     .join('');
-  const style = `--uzl-size:${esc(o.size)};--uzl-color:${esc(o.color)};--uzl-duration:${o.duration}s`;
+  const style = `--uic-size:${esc(o.size)};--uic-color:${esc(o.color)};--uic-duration:${o.duration}s`;
   return (
-    `<span class="uzl" role="status" aria-live="polite" style="${style}">${rings}` +
-    `<span class="uzl-sr">${esc(o.label)}</span></span>`
+    `<span class="uic" role="status" aria-live="polite" style="${style}">${rings}` +
+    `<span class="uic-sr">${esc(o.label)}</span></span>`
   );
 }
 

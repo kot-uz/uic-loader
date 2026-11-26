@@ -1,1 +1,1 @@
-export { UzLoaderElement, defineUzLoader } from './index';
+export { UicLoaderElement, defineUicLoader } from './index';
